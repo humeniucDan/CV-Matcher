@@ -1,0 +1,9 @@
+fastapi
+redis
+uvicorn
+requests
+aioredis
+boto3
+python-docx
+ollama
+ipython
