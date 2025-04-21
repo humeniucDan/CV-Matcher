@@ -90,6 +90,7 @@ def convert_text_to_json(text):
     """
 
     try:
+        logger.info("Starting ollama chat")
         response = ollama.chat(
             model=model,
             # options={'keep_alive': '-1'},
@@ -97,6 +98,7 @@ def convert_text_to_json(text):
                 {'role': 'user', 'content': f"{prompt} {text}"},
             ]
         )
+        logger.info("Ended ollama chat")
 
         # remove the entire ...<./think> section
         summary = (re.sub(r'.*?', '', response['message']['content'], flags=re.DOTALL)

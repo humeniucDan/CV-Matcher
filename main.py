@@ -32,6 +32,7 @@ s3_client = boto3.client(
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 def extract_file_from_filebase(cv_id):
     try:
         cv_file = s3_client.get_object(Bucket=FILEBASE_BUCKET_NAME, Key=cv_id)
@@ -57,7 +58,8 @@ def listen_to_queue():
 
 @app.on_event("startup")
 async def startup_event():
-    await asyncio.create_task(listen_to_queue())
+    loop = asyncio.get_event_loop()
+    loop.run_in_executor(None, listen_to_queue)
     logger.info("Starting thread to listen to queue")
 
 
