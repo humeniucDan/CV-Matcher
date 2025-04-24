@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #f0f0f0;
+}
+
+/* Reset filters by default */
+.panelLeft,
+.panelRight {
+  transition: filter 0.4s ease;
+  filter: brightness(1);
+}
+
+/* Hovering left */
+.leftHover .panelLeft {
+  filter: brightness(1.05);
+}
+.leftHover .panelRight {
+  filter: brightness(0.8);
+}
+
+/* Hovering right */
+.rightHover .panelRight {
+  filter: brightness(1.15);
+}
+.rightHover .panelLeft {
+  filter: brightness(0.8);
+}
+/* Panels */
+.panelLeft {
+  background-color: 	#d3d3c6;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.panelRight {
+  background-color: #007ea7;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+  .circularImage {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  .logoContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+  
+  .logo {
+    height: auto;
+    width: auto;
+  }

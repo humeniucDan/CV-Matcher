@@ -1,0 +1,103 @@
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-left: 5px solid #5ca5a5;
+  }
+  
+  
+  .companyRow {
+    margin-bottom: 0.25rem;
+  }
+  
+  .company {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #777;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+  }
+
+  .topRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .position {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: black;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tag {
+    background-color: #eef6f9;
+    color: #1c7e99;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+
+  .bottomRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .meta {
+    color: #666;
+    font-size: 0.9rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .location {
+    font-weight: 500;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .btnPrimary,
+  .btnDanger {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .btnPrimary {
+    background-color: #1cc972;
+    color: white;
+  }
+  
+  .btnDanger {
+    background-color: #f44336;
+    color: white;
+  }
