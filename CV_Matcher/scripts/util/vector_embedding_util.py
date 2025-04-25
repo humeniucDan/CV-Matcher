@@ -2,7 +2,7 @@ from google import genai
 from google.genai import types
 import pandas as pd
 
-GOOGLE_API_KEY = 'AIzaSyB5c78qm-K4J7U5xjpQwgsPxhH6YGMqPyo'
+GOOGLE_API_KEY = ''
 client = genai.Client(api_key=GOOGLE_API_KEY)
 
 def embed_json(json: str, id: int):

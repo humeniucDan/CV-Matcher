@@ -173,7 +173,7 @@ Project Experience
    Created a real-time data analytics platform leveraging Python and Django for the backend, with PostgreSQL as the database to manage large datasets efficiently. Utilized ReactJS and TypeScript to build a dynamic and interactive user interface. Integrated AWS services for cloud storage and Docker for containerization, enabling smooth deployment and scalability. Technologies and tools used: Python, Django, PostgreSQL, ReactJS, TypeScript, AWS, Docker.
 
     """
-    GOOGLE_API_KEY = 'AIzaSyAXllQXKvQmkAz5mK0oSabwMDzmmLCb4qI'
+    GOOGLE_API_KEY = ''
     client = genai.Client(api_key=GOOGLE_API_KEY)
     job_ids, job_texts = read_folder('../../DataSet/job_descriptions')
 
