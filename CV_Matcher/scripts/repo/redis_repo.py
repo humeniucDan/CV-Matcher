@@ -29,11 +29,11 @@ async def process_cv(data: bytes):
         file = f'cv-raw/{data.decode('utf-8')}'
         print("Process CV:", file)
         cv = filebase.get_object(file)
-        #cv_service.add_cvs(cv)
-        json = json_parser.summary_cv(cv)
+        cv_service.add_cvs(cv)
+        #json = json_parser.summary_cv(cv)
 
-        file_insert = f'cv-processed/{data.decode('utf-8')}.json'
-        filebase.put_object(file_insert, json)
+        #file_insert = f'cv-processed/{data.decode('utf-8')}.json'
+        #filebase.put_object(file_insert, json)
     except Exception as e:
         print(f"Error processing CV: {e}")
 
@@ -42,10 +42,10 @@ async def process_job(data: bytes):
         file = f'jobs/{data.decode('utf-8')}'
         print("Process Job:", file)
         job = filebase.get_object(file)
-        #job_service.add_jobs(job)
+        job_service.add_jobs(job)
 
-        json = json_parser.summary_job(job)
-        print(json)
+        #json = json_parser.summary_job(job)
+        #print(json)
 
     except Exception as e:
         print(f"Error processing Job: {e}")
