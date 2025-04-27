@@ -24,6 +24,10 @@ def create_tables():
             id SERIAL PRIMARY KEY,
             embedding FLOAT[] NOT NULL
         )
+        """,
+        """
+        CREATE TABLE IF NOT EXISTS sim_matrix (
+                    id INTEGER PRIMARY KEY)
         """
     )
 
@@ -41,7 +45,7 @@ def create_tables():
         cursor.execute("""
             SELECT table_name 
             FROM information_schema.tables 
-            WHERE table_name IN ('cv_embeddings', 'job_embeddings')
+            WHERE table_name IN ('cv_embeddings', 'job_embeddings', 'sim_matrix')
         """)
         print("Created tables:", [row[0] for row in cursor.fetchall()])
 

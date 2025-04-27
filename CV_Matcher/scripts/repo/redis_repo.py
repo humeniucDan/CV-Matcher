@@ -8,11 +8,16 @@ from scripts.util import cv_util, job_util
 from scripts.repo.abstract_file_repo import get_connection
 
 HOST, PORT = 'localhost', 6379
-CV_QUEUE   = 'queue:cvs'
-JOB_QUEUE  = 'queue:jobs'
+CV_QUEUE = 'queue:cvs'
+JOB_QUEUE = 'queue:jobs'
+
+ACK_CV_QUEUE = 'queue:ack:cvs'
+ACK_JOB_QUEUE = 'queue:ack:jobs'
+
+client = redis.Redis(host=HOST, port=PORT, db=0)
+
 
 async def listener(stop_event: asyncio.Event):
-    client = redis.Redis(host=HOST, port=PORT, db=0)
     try:
         while not stop_event.is_set():
             result = await client.blpop([CV_QUEUE, JOB_QUEUE], timeout=1)
@@ -25,7 +30,9 @@ async def listener(stop_event: asyncio.Event):
     finally:
         await client.aclose()
 
+
 async def process_cv(data: bytes):
+    file_insert = ''
     try:
         file = f'cv-raw/{data.decode('utf-8')}'
         print("Process CV:", file)
@@ -44,10 +51,15 @@ async def process_cv(data: bytes):
 
         file_insert = f'cv-processed/{cv_id}.json'
         filebase.put_object(file_insert, json_cv)
+
+        # Acknowledge the CV processing
+        await client.lpush(ACK_CV_QUEUE, f"s:{cv_id}.json")
     except Exception as e:
         print(f"Error processing CV: {e}")
+        await client.lpush(ACK_CV_QUEUE, f"e:{data.decode('utf-8')}")
 
 async def process_job(data: bytes):
+    file_insert = ''
     try:
         file = f'job-raw/{data.decode('utf-8')}'
         print("Process job:", file)
@@ -66,13 +78,18 @@ async def process_job(data: bytes):
         file_insert = f'job-processed/{job_id}.json'
         filebase.put_object(file_insert, json_job)
 
+        # Acknowledge the job processing
+        await client.lpush(ACK_JOB_QUEUE, f"s:{job_id}.json")
     except Exception as e:
         print(f"Error processing Job: {e}")
+        await client.lpush(ACK_JOB_QUEUE, f"e:{data.decode('utf-8')}")
+
 
 async def main():
     stop_event = asyncio.Event()
     task = asyncio.create_task(listener(stop_event))
     await task
+
 
 if __name__ == '__main__':
     asyncio.run(main())

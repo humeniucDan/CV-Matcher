@@ -9,7 +9,7 @@ from scripts.util.df_util import convert_wide_to_compact, convert_compact_to_wid
 DB_CONFIG = {
     "dbname": "CV_Matcher",
     "user": "postgres",
-    "password": "changeme",
+    "password": "omega1234",
     "host": "localhost",
     "port": "5432"
 }
