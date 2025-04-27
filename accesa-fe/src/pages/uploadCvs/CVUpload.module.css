@@ -1,0 +1,141 @@
+.fullPage {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  
+  .dropZone {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 600px;
+    height: 200px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .dropZone:hover {
+    border-color: #1cc972;
+  }
+  
+  .activeDropZone {
+    border-color: #1cc972;
+    background-color: #f0fff7;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .hiddenInput {
+    display: none;
+  }
+  
+  .dropText {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .dropText span {
+    color: #1cc972;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .fileList {
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    max-height: 300px; 
+    overflow-y: auto;  
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  
+  .fileList::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .fileList::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+  }
+  
+  .fileList::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+  }
+
+.fileList h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.fileList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fileItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  color: black;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: #d9534f;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.removeButton:hover {
+  color: #c9302c;
+}
+  
+  .submitButton {
+    margin-top: 1.5rem;
+    padding: 0.75rem 2rem;
+    background-color: #1cc972;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submitButton:hover:not(:disabled) {
+    background-color: #17b666;
+  }
+  
+  .submitButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
