@@ -1,0 +1,5 @@
+AI:
+  - MOTIVATE FORMULA
+  - add thresholds for match quality
+  - add length checking
+  - add checker model (probably stochastic)
