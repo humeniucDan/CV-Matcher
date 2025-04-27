@@ -1,18 +1,16 @@
 package com.example.be_accesa.Service;
 
-import com.example.be_accesa.Model.CvHash;
 import com.example.be_accesa.Model.JobHash;
-import com.example.be_accesa.Repository.ICvHashRepo;
-import com.example.be_accesa.Repository.JobHashRepo;
+import com.example.be_accesa.Repository.IJobHashRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JobHashService {
-    private final JobHashRepo jobRepo;
+    private final IJobHashRepo jobRepo;
 
     @Autowired
-    public JobHashService(JobHashRepo jobRepo){
+    public JobHashService(IJobHashRepo jobRepo){
         this.jobRepo = jobRepo;
     }
 

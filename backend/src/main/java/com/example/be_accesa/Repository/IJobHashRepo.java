@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface JobHashRepo extends JpaRepository<JobHash, Long> {
+public interface IJobHashRepo extends JpaRepository<JobHash, Long> {
 }
