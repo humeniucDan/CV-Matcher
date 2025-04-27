@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -33,3 +34,11 @@ build/
 .vscode/
 
 src/main/resources/application.properties
+=======
+*/.venv
+*/.idea
+*/DataSet
+*/.ipynb_checkpoints
+*/.virtual_documents
+*/scripts/.env
+>>>>>>> main
