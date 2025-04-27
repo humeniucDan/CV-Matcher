@@ -31,30 +31,25 @@ def create_tables():
         """
     )
 
-    try:
-        conn = psycopg2.connect(**DB_CONFIG)
-        cursor = conn.cursor()
+    conn = psycopg2.connect(**DB_CONFIG)
+    cursor = conn.cursor()
 
-        for command in commands:
-            cursor.execute(command)
+    for command in commands:
+        cursor.execute(command)
 
-        conn.commit()
-        print("Tables created successfully!")
+    conn.commit()
+    # Verify tables
+    cursor.execute("""
+        SELECT table_name 
+        FROM information_schema.tables 
+        WHERE table_name IN ('cv_embeddings', 'job_embeddings', 'sim_matrix')
+    """)
+    # print("Created tables:", [row[0] for row in cursor.fetchall()])
 
-        # Verify tables
-        cursor.execute("""
-            SELECT table_name 
-            FROM information_schema.tables 
-            WHERE table_name IN ('cv_embeddings', 'job_embeddings', 'sim_matrix')
-        """)
-        print("Created tables:", [row[0] for row in cursor.fetchall()])
+    if conn:
+        cursor.close()
+        conn.close()
 
-    except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        if conn:
-            cursor.close()
-            conn.close()
 
 
 if __name__ == "__main__":
