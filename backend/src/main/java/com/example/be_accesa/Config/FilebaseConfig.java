@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class FilebaseConfig {
-
     @Value("${aws.s3.accessKey}")
     private String accessKey;
 
