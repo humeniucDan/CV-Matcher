@@ -1,0 +1,21 @@
+.searchWrapper {
+    margin-top: 5vh;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .searchInput {
+    padding: 0.75rem 1rem;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s ease;
+  }
+  
+  .searchInput:focus {
+    border-color: #1cc972;
+  }
