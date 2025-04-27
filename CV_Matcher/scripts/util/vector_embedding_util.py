@@ -14,10 +14,8 @@ def embed_json(json: str, id: int):
     df_embedding = pd.DataFrame([e.values for e in embedding.embeddings], index=[i for i in range(id, id+1)])
     return df_embedding
 
-def calc_sim_measure(df_cv, df_job):
-    print("df_cv")
-    print(df_cv)
-    print("df_job")
-    print(df_job)
+def calc_sim_measure(df_cv: pd.DataFrame, df_job: pd.DataFrame):
+    if df_cv.shape[1] != df_job.shape[1]:
+        return None
     sim = df_cv @ df_job.T
     return sim

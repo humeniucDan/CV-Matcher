@@ -44,7 +44,7 @@ def save_embeddings(df_orig: pd.DataFrame, collection_name: str) -> pd.DataFrame
 def get_df(collection_name: str) -> pd.DataFrame:
     with get_connection() as conn:
         # Build safe SQL query with dynamic table name
-        query = sql.SQL("SELECT * FROM {table}").format(
+        query = sql.SQL("SELECT * FROM {table} order by id asc").format(
             table=sql.Identifier(collection_name)
         )
         # Convert SQL object to string for pandas
