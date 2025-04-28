@@ -12,6 +12,11 @@ const CvCard = ({ cv }) => {
     <div className={styles.card}>
       <div className={styles.topRow}>
         <h2 className={styles.name}>{cv.Name}</h2>
+        {cv.Similarity && (
+          <span className={styles.infoTag}>
+            {cv.Similarity}%
+          </span>
+        )}
 
         <div className={styles.shortInfo}>
           {cv["Technical Skills"]?.slice(0, 3).map((skill, index) => (
