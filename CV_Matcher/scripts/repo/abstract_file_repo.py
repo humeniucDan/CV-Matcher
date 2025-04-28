@@ -1,17 +1,21 @@
+import os
+
 import pandas as pd
 import psycopg2
 import numpy as np
 from psycopg2 import sql
 from psycopg2.extras import RealDictCursor
-
 from scripts.util.df_util import convert_wide_to_compact, convert_compact_to_wide
+from dotenv import load_dotenv
+
+load_dotenv()
 
 DB_CONFIG = {
-    "dbname": "CV_Matcher",
-    "user": "postgres",
-    "password": "changeme",
-    "host": "localhost",
-    "port": "5432"
+    "dbname": os.getenv("PG_DBNAME"),
+    "user": os.getenv("PG_USER"),
+    "password": os.getenv("PG_PASSWORD"),
+    "host": os.getenv("PG_HOST"),
+    "port": os.getenv("PG_PORT")
 }
 
 def get_connection():

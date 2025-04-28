@@ -2,7 +2,7 @@ import ollama
 import re
 
 def summary_cv(cv_text):
-    model = 'deepseek-r1:1b_vram'
+    model = 'deepseek-r1:1.5b_vram'
     prompt = """
 You are a CV-to-JSON converter. Transform input CVs into JSON format following these rules:
 
@@ -81,7 +81,7 @@ The text:
     return summary
 
 def summary_job(job_text):
-    model = 'deepseek-r1:1b_vram'
+    model = 'deepseek-r1:1.5b_vram'
     prompt = """Act as a job post parser. Analyze the provided job description and return a structured JSON output in the following format:  
 {  
   "Type": "[junior/senior/etc] (extracted from job title)",  

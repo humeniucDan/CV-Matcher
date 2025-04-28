@@ -15,7 +15,6 @@ import pandas as pd
 def process_cv(cv, df_job_embeddings, id):
     # convert cv docx to json
     cv_json = summary_cv(cv)
-    print(cv_json)
     # create vector embedding for cv
     df_cv_embedding = embed_json(cv_json, id)
     # calculate sim measure

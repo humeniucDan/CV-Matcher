@@ -1,12 +1,16 @@
 import psycopg2
 from psycopg2 import sql
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 DB_CONFIG = {
-    "dbname": "CV_Matcher",
-    "user": "postgres",
-    "password": "omega1234",
-    "host": "localhost",
-    "port": "5432"
+    "dbname": os.getenv("PG_DBNAME"),
+    "user": os.getenv("PG_USER"),
+    "password": os.getenv("PG_PASSWORD"),
+    "host": os.getenv("PG_HOST"),
+    "port": os.getenv("PG_PORT")
 }
 
 

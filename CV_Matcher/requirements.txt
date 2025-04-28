@@ -1,0 +1,12 @@
+pandas
+psycopg2
+numpy
+seaborn
+matplotlib
+redis
+python-docx
+boto3
+botocore
+asyncio
+dotenv
+ollama

@@ -38,12 +38,15 @@ async def process_cv(data: bytes):
         cv_embedding, sim_measures, json_cv = cv_util.process_cv(cv, job_vector_embeddings, cv_id)
         # save cv_vector_embedding in db
         save_cv_embeddings(cv_embedding)
+        print(f"Saved cv embidding id {cv_id}")
         # insert new sim_measure 'row'
         # if sim_measures is not None:
         insert_new_row(get_connection(), cv_id, sim_measures)
+        print(f"Added row in sim_matrix {cv_id}")
 
         file_insert = f'cv-processed/{cv_id}.json'
         filebase.put_object(file_insert, json_cv)
+        print(f"Cv saved in filebase {cv_id}")
     except Exception as e:
         print(f"Error processing CV: {e}")
 
@@ -60,12 +63,14 @@ async def process_job(data: bytes):
         job_embedding, sim_measures, json_job = job_util.process_job(cv_vector_embeddings, job, job_id)
         # save job_vector_embedding in db
         save_job_embeddings(job_embedding)
+        print(f"Saved job embidding id {job_id}")
         # insert new sim_measure 'row'
         insert_new_column(get_connection(), str(job_id), sim_measures)
+        print(f"Added column in sim_matrix {job_id}")
 
         file_insert = f'job-processed/{job_id}.json'
         filebase.put_object(file_insert, json_job)
-
+        print(f"Job saved in filebase {job_id}")
     except Exception as e:
         print(f"Error processing Job: {e}")
 
