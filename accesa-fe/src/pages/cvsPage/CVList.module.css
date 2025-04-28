@@ -7,7 +7,7 @@
     overflow-x: hidden;
   }
   
-  /* Top Section */
+ 
   .topSection {
     background: url('../../assets/prism.svg') repeat center center;
     background-size: cover;
@@ -15,12 +15,12 @@
     height: 200px;
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 0 20px;
   }
   
-  /* Upload Button */
+ 
   .uploadButton {
     width: 175px;
     height: 65px;
@@ -40,15 +40,15 @@
     font-size: 1.5em;
   }
   
-  /* Cv List - Grid Layout */
+  
   .cvList {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: 1fr;
     gap: 20px;
-    padding: 60px 20px 20px; 
+    padding: 60px 20px 20px;
   }
   
-  /* Media Queries for better responsiveness */
+
   @media (max-width: 768px) {
     .topSection {
       flex-direction: column;
@@ -62,6 +62,15 @@
       width: 150px;
       font-size: 1em;
     }
+
+
+    .uploadButton:hover {
+        background: #29b4da;
+        color: white;
+        font-size: 1.2em;
+      }
+
+
   }
   
   @media (max-width: 480px) {

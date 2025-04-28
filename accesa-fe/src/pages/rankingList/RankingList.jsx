@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./RankingList.module.css";
-import CvCard from "../../components/cvCard/cvCard";
+import CvCard from "../../components/cvCard/CvCard";
 import { useLocation } from "react-router-dom";
 
 const RankingList = () => {

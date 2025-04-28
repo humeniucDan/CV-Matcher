@@ -7,7 +7,7 @@
   overflow-x: hidden;
 }
 
-/* Top Section */
+
 .topSection {
   background: url('../../assets/prism.svg') repeat center center;
   background-size: cover;
@@ -21,7 +21,7 @@
   flex-wrap: wrap;
 }
 
-/* Search Wrapper */
+
 .searchWrapper {
   background: white;
   border-radius: 5px;
@@ -33,7 +33,7 @@
   
 }
 
-/* Upload Button */
+
 .uploadButton {
   width: 175px;
   height: 60px;
@@ -54,15 +54,15 @@
   font-size: 1.5em;
 }
 
-/* Job List Cards Area */
+
 .jobList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: 1fr;
   gap: 20px;
   padding: 60px 20px 20px;
 }
 
-/* Responsive behavior */
+
 @media (max-width: 768px) {
   .topSection {
     flex-direction: column;

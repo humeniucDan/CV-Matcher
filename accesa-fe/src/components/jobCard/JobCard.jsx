@@ -46,9 +46,7 @@ const JobCard = ({ job, deleteJob }) => {
           <span>{job.Type}</span>
         </div>
 
-        <button className={styles.btnPrimary} onClick={toggleDetails}>
-          {showDetails ? 'Hide Details' : 'Show Details'}
-        </button>
+        
 
         {showDetails && (
           <>
@@ -104,6 +102,9 @@ const JobCard = ({ job, deleteJob }) => {
         )}
 
         <div className={styles.buttons}>
+        <button className={styles.btnPrimary} onClick={toggleDetails}>
+          {showDetails ? 'Hide Details' : 'Show Details'}
+        </button>
           <button className={styles.btnPrimary} onClick={checkCandidateList}>Check candidate list</button>
           <button className={styles.btnDanger} onClick={removeJob}>Remove Job</button>
         </div>

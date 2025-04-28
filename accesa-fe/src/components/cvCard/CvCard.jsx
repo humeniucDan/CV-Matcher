@@ -4,6 +4,24 @@ import styles from "./CvCard.module.css";
 const CvCard = ({ cv }) => {
   const [showDetails, setShowDetails] = useState(false);
 
+
+  const removeCV = async () => {
+    const deleteCVUrl = new URL('http://localhost:8080/cv/delete-cv')
+    deleteCVUrl.searchParams.append('cvId', cv.id)
+    
+    const response = await fetch(deleteCVUrl, {
+      method : 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+
+    if(response.ok) {
+      deleteJob(cv.id)
+    }
+  }
+
+
   const toggleShowDetails = () => {
     setShowDetails(!showDetails);
   };
@@ -28,9 +46,6 @@ const CvCard = ({ cv }) => {
           ))}
         </div>
 
-        <button onClick={toggleShowDetails} className={styles.showButton}>
-          {showDetails ? "Hide Details" : "Show More"}
-        </button>
       </div>
 
       {showDetails && (
@@ -137,6 +152,13 @@ const CvCard = ({ cv }) => {
           )}
         </div>
       )}
+      <div className={styles.buttons}>
+              <button className={styles.btnPrimary} onClick={toggleShowDetails}>
+                {showDetails ? 'Hide Details' : 'Show Details'}
+              </button>
+                <button className={styles.btnPrimary} >Check jobs list</button>
+                <button className={styles.btnDanger} onClick={removeCV} >Remove candidate</button>
+              </div>
     </div>
   );
 };
