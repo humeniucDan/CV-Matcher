@@ -157,7 +157,6 @@ const CvCard = ({ cv }) => {
                 {showDetails ? 'Hide Details' : 'Show Details'}
               </button>
                 <button className={styles.btnPrimary} >Check jobs list</button>
-                <button className={styles.btnDanger} onClick={removeCV} >Remove candidate</button>
               </div>
     </div>
   );
