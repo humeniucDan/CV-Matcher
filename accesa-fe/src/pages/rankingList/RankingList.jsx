@@ -24,6 +24,7 @@ const RankingList = () => {
         
         if (response.ok) {
           const data = await response.json();
+          console.log(data)
           setCvList(data);
         }
       } catch (err) {
