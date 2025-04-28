@@ -44,19 +44,24 @@ const JobList = () => {
   const filteredJobs = getFilteredJobs();
 
   return (
-    <div className={styles.jobListContainer}>
-      <SearchBar value={searchTerm} onChange={handleSearch} />
-
-      <div className={styles.jobList}>
-        {filteredJobs.length > 0 ? (
-          filteredJobs.map((job) => (
-            <JobCard key={job.id} job={job} deleteJob={deleteJob} />
-          ))
-        ) : (
-          <p>No jobs found</p>
-        )}
+    <div className={styles.jobListPage}>
+    <div className={styles.topSection}>
+      <div className={styles.searchWrapper}>
+        <SearchBar value={searchTerm} onChange={handleSearch} />
       </div>
     </div>
+  
+    <div className={styles.jobList}>
+      {filteredJobs.length > 0 ? (
+        filteredJobs.map((job) => (
+          <JobCard key={job.id} job={job} deleteJob={deleteJob} />
+        ))
+      ) : (
+        <p>No jobs found</p>
+      )}
+    </div>
+  </div>
+  
   );
 };
 

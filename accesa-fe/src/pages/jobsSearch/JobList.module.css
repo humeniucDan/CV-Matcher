@@ -1,15 +1,39 @@
-.jobListContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .jobList {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-    justify-content: center;
-  }
+.jobListPage {
+  background-color: hsl(180, 52%, 96%); /* Light bluish background */
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+/* Top blue background with waves */
+.topSection {
+  background: url('../../assets/prism.svg') repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 200px; 
+  position: relative;
+}
+
+
+.searchWrapper {
+  position: absolute;
+  left: 35%;
+  bottom: -25px; 
+  transform: translateX(-50%);
+  width: 80%; 
+  max-width: 800px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  padding: 10px;
+  height: 20%;
+}
+
+/* Job List Cards Area */
+.jobList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 60px 20px 20px; /* top padding so cards don't hit SearchBar */
+}
