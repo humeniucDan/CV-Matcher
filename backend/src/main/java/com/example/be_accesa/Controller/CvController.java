@@ -58,11 +58,12 @@ public class CvController {
             String cvId = "cv-raw/" + fileHashed;
 
             if (!filebaseService.uploadFile(cvId, file)) {
-                return ResponseEntity.badRequest().body("Error uploading raw cv " + file.getOriginalFilename());
+                continue;
             }
 
             if (!redisService.enqueueCvId(fileHashed)) {
-                return ResponseEntity.badRequest().body("Error adding cv id to queue" + file.getOriginalFilename());
+                filebaseService.deleteFile(cvId);
+                continue;
             }
 
             map.put(file.getOriginalFilename(), cvId);

@@ -53,7 +53,7 @@ public class JobController {
             String jobHash = FileHasher.hashMultipartFile(file);
 
             if(jobHash == null){
-                return ResponseEntity.badRequest().body("Error hashing job " + file.getOriginalFilename());
+                continue;
             }
 
             JobHash newJobHash;
@@ -69,11 +69,12 @@ public class JobController {
             String jobId = "job-raw/" + fileHashed;
 
             if(!filebaseService.uploadFile(jobId, file)) {
-                return ResponseEntity.badRequest().body("Error uploading raw job " + file.getOriginalFilename());
+                jobHashService.deleteById(newJobHash.getId());
+                continue;
             }
 
             if(!redisService.enqueueJobId(fileHashed)) {
-                return ResponseEntity.badRequest().body("Error adding job id to queue " + file.getOriginalFilename());
+                filebaseService.deleteFile(jobId);
             }
 
             map.put(file.getOriginalFilename(), jobId);
@@ -95,7 +96,7 @@ public class JobController {
             byte[] cvJsonBytes = filebaseService.getFile(cvId);
 
             if(cvJsonBytes == null) {
-                return ResponseEntity.badRequest().body("Error fetching cv with id " + cvId);
+                continue;
             }
 
             String cvJsonString = new String(cvJsonBytes, StandardCharsets.UTF_8);
