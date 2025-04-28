@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import JobCard from "../../components/jobCard/JobCard";
 import SearchBar from "../../components/searchBar/Searchbar";
 import styles from "./JobList.module.css";
+import { useNavigate } from 'react-router-dom';
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
@@ -21,6 +22,7 @@ const JobList = () => {
     fetchJobs();
   }, []);
 
+  
   const deleteJob = (jobId) => {
     setJobs(prevJobs => prevJobs.filter(job => job.id !== jobId));
   };
@@ -43,20 +45,35 @@ const JobList = () => {
 
   const filteredJobs = getFilteredJobs();
 
-  return (
-    <div className={styles.jobListContainer}>
-      <SearchBar value={searchTerm} onChange={handleSearch} />
+  const navigate = useNavigate();
+  
+  const handleInsertJobClick = () => {
+    navigate('/job-upload');
+  };
 
-      <div className={styles.jobList}>
-        {filteredJobs.length > 0 ? (
-          filteredJobs.map((job) => (
-            <JobCard key={job.id} job={job} deleteJob={deleteJob} />
-          ))
-        ) : (
-          <p>No jobs found</p>
-        )}
+  return (
+    <div className={styles.jobListPage}>
+    <div className={styles.topSection}>
+      <div className={styles.searchWrapper}>
+        <SearchBar value={searchTerm} onChange={handleSearch} />
       </div>
+      <button className={styles.uploadButton} onClick={handleInsertJobClick} >Add jobs</button>
     </div>
+
+ 
+    
+  
+    <div className={styles.jobList}>
+      {filteredJobs.length > 0 ? (
+        filteredJobs.map((job) => (
+          <JobCard key={job.id} job={job} deleteJob={deleteJob} />
+        ))
+      ) : (
+        <p>No jobs found</p>
+      )}
+    </div>
+  </div>
+  
   );
 };
 

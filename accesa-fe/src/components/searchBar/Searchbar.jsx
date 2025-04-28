@@ -3,7 +3,7 @@ import styles from './Searchbar.module.css';
 
 const Searchbar = ({ value, onChange }) => {
   return (
-    <div className={styles.searchWrapper}>
+    <div className={styles.searchBarContainer}>
       <input
         type="text"
         placeholder="Search by position or company..."

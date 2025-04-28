@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
-import styles from "./CVUpload.module.css";
+import styles from "./JobUpload.module.css";
 
-const CVUpload = () => {
+const JobUpload = () => {
   const [files, setFiles] = useState([]);
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef();
@@ -39,7 +39,7 @@ const CVUpload = () => {
 
     try {
 
-      let uploadUrl = "http://localhost:8080/cv/upload-cv-batch"
+      let uploadUrl = "http://localhost:8080/job/upload-job-batch"
 
       const response = await fetch(uploadUrl, {
         method: "POST",
@@ -78,7 +78,7 @@ const CVUpload = () => {
           onChange={handleFileChange}
         />
         <p className={styles.dropText}>
-          Drag and drop CV files here, or <span>click to select</span>
+          Drag and drop job files here, or <span>click to select</span>
         </p>
       </div>
 
@@ -112,4 +112,4 @@ const CVUpload = () => {
   );
 };
 
-export default CVUpload;
+export default JobUpload;

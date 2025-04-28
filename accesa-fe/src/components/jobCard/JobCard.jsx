@@ -1,26 +1,14 @@
 import React, { useState } from 'react';
 import styles from './JobCard.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const JobCard = ({ job, deleteJob }) => {
+  const navigate = useNavigate();
+
   const [showDetails, setShowDetails] = useState(false);
 
   const checkCandidateList = async () => {
-    try {
-      const getRankingUrl = new URL('http://localhost:8080/job/get-job-top')
-      getRankingUrl.searchParams.append('jobId', job.id)
-      getRankingUrl.searchParams.append('limit', 100)
-
-      const response = await fetch(getRankingUrl);
-
-      if(response.ok) {
-        const data = await response.json()
-        console.log(data)
-        //TODO : cv urile vin in ordinea buna, primul fiind cel mai corelat de job, acum doar trebuie creat un CV folosind datele din json si afisata o lista cu CV-uri
-      }
-      
-    } catch (err) {
-      console.error('Error fetching jobs:', err);
-    }
+    navigate("/view-jobs/ranking", { state : { currJob : job }})
   }
 
   const removeJob = async () => {
@@ -58,9 +46,7 @@ const JobCard = ({ job, deleteJob }) => {
           <span>{job.Type}</span>
         </div>
 
-        <button className={styles.btnPrimary} onClick={toggleDetails}>
-          {showDetails ? 'Hide Details' : 'Show Details'}
-        </button>
+        
 
         {showDetails && (
           <>
@@ -116,6 +102,9 @@ const JobCard = ({ job, deleteJob }) => {
         )}
 
         <div className={styles.buttons}>
+        <button className={styles.btnPrimary} onClick={toggleDetails}>
+          {showDetails ? 'Hide Details' : 'Show Details'}
+        </button>
           <button className={styles.btnPrimary} onClick={checkCandidateList}>Check candidate list</button>
           <button className={styles.btnDanger} onClick={removeJob}>Remove Job</button>
         </div>
