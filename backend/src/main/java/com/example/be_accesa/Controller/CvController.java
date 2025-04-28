@@ -64,11 +64,13 @@ public class CvController {
             String cvId = "cv-raw/" + fileHashed;
 
             if (!filebaseService.uploadFile(cvId, file)) {
+                cvHashService.deleteById(newCvHash.getId());
                 continue;
             }
 
             if (!redisService.enqueueCvId(fileHashed)) {
                 filebaseService.deleteFile(cvId);
+                cvHashService.deleteById(newCvHash.getId());
                 continue;
             }
 

@@ -17,4 +17,8 @@ public class CvHashService {
     public CvHash save(String fileHash){
         return cvRepo.save(new CvHash(fileHash));
     }
+
+    public void deleteById(Long id) {
+        cvRepo.deleteById(id);
+    }
 }

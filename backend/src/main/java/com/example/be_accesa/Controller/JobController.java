@@ -75,6 +75,7 @@ public class JobController {
 
             if(!redisService.enqueueJobId(fileHashed)) {
                 filebaseService.deleteFile(jobId);
+                jobHashService.deleteById(newJobHash.getId());
             }
 
             map.put(file.getOriginalFilename(), jobId);
