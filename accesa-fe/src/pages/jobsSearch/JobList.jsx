@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import JobCard from "../../components/jobCard/JobCard";
 import SearchBar from "../../components/searchBar/Searchbar";
 import styles from "./JobList.module.css";
+import { useNavigate } from 'react-router-dom';
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
@@ -43,13 +44,23 @@ const JobList = () => {
 
   const filteredJobs = getFilteredJobs();
 
+  const navigate = useNavigate();
+  
+  const handleInsertJobClick = () => {
+    navigate('/job-upload');
+  };
+
   return (
     <div className={styles.jobListPage}>
     <div className={styles.topSection}>
       <div className={styles.searchWrapper}>
         <SearchBar value={searchTerm} onChange={handleSearch} />
       </div>
+      <button className={styles.uploadButton} onClick={handleInsertJobClick} >Add jobs</button>
     </div>
+
+ 
+    
   
     <div className={styles.jobList}>
       {filteredJobs.length > 0 ? (

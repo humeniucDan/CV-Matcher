@@ -17,7 +17,7 @@ const SplitScreen = () => {
   const navigate = useNavigate();
 
   const handleInsertCVClick = () => {
-    navigate('/cv-upload');
+    navigate('/view-cvs');
   };
 
   const handleCheckJobsClick = () => {
@@ -29,7 +29,7 @@ const SplitScreen = () => {
     <div className={containerClass}>
       <div className={styles.panelLeft}  onMouseEnter={() => setHovered('left')} onMouseLeave={() => setHovered(null)}>
         <img src={leftImage} alt="Left" className={styles.circularImage} />
-        <button className={styles.button} onClick={handleInsertCVClick}>Insert CV / Job</button>
+        <button className={styles.button} onClick={handleInsertCVClick}>Check CV's</button>
       </div>
 
       <div className={styles.logoContainer}>
