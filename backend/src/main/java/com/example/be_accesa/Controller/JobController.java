@@ -101,6 +101,11 @@ public class JobController {
 
             try {
                 Map<String, Object> cvJsonMapped = objectMapper.readValue(cvJsonString, Map.class);
+
+                String similarity = String.format("%.2f", cv.getSimilarity() * 100);
+
+                cvJsonMapped.put("Similarity", similarity);
+
                 cvList.add(cvJsonMapped);
             } catch (JsonProcessingException e) {
                 // TODO : handle different multiple exceptions
